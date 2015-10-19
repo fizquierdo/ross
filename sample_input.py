@@ -13,8 +13,8 @@ train = pd.read_csv( train_file )
 threshold_date = '2015-06-01'
 newtrain = train.loc[train.Date <= threshold_date] # 950,309
 newtest  = train.loc[train.Date > threshold_date] # 66,900
+assert (len(train) == len(newtrain) + len(newtest)) 
 
-assert (len(train) == len(newtrain) + len(newtest))
 newtrain.to_csv(wdir+'train.csv')
 
 #print len(newtest['Store'])

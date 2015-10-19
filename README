@@ -12,3 +12,4 @@ Run the prediction algorithms
 Evaluate solution by calculating
 
 	$python eval_solution.py 
+	=> RMSPE stat and distribution of the error

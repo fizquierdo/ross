@@ -31,8 +31,6 @@ columns = ['Store', 'DayOfWeek', 'Promo']
 medians = train.groupby( columns )['Sales'].median()
 medians = medians.reset_index()
 
-#print len(medians), 'available triplets'
-
 # each entry in the test dataset has a unique triplet ? 
 # assign median to each row
 test2 = pd.merge( test, medians, on = columns, how = 'left' )
