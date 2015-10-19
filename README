@@ -1,0 +1,14 @@
+
+Generate a new subset of test/train datasets by sampling the train.csv file
+
+	$python sample_input.py 
+	=> ../input/sampled/  train, test, test_solution
+
+Run the prediction algorithms
+
+	$python predict_with_sales.py 
+	=> prediction.csv
+
+Evaluate solution by calculating
+
+	$python eval_solution.py 
