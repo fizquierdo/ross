@@ -35,6 +35,7 @@ print evaluation.describe()
 print 'RMSPE', rmspe
 
 plt.figure();
+'''
 evaluation['diff'].hist(bins=200)
 plt.title('Distribution of difference')
 plt.show()
@@ -43,8 +44,15 @@ plt.title('Distribution of square error')
 plt.show()
 evaluation['sqr_error'].plot(kind='box', title='distribution of square error')
 plt.show()
-evaluation['sqr_error'].cumsum().plot(title='cumulative sum of square error')
-plt.show()
+'''
+evaluation['sqr_error'].cumsum().plot(title='cumsum of sqr err', label='std')
+
+threshold = np.percentile(list(evaluation['sqr_error']), 99)
+
+# eliminate the worst 1% of the error
+evaluation.loc[evaluation.sqr_error > threshold, 'sqr_error'] = 0.0
+
 # to see all data points (takes very long)
-#evaluation['sqr_error'].plot()
-#plt.show()
+evaluation['sqr_error'].cumsum().plot(label='without worst 1% error')
+plt.legend(loc='upper left')
+plt.show()
