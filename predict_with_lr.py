@@ -28,6 +28,8 @@ train = train.loc[train.Sales > 0]
 test.loc[ test.Open.isnull(), 'Open' ] = 1
 
 # Linear regression: create X and Y
+# following example from  http://nbviewer.ipython.org/github/justmarkham/DAT4/blob/master/notebooks/08_linear_regression.ipynb
+
 #columns = ['Store', 'DayOfWeek', 'Promo']
 #columns = ['Store', 'DayOfWeek', 'Promo', 'StateHoliday', 'SchoolHoliday']
 columns = ['Store', 'DayOfWeek', 'Promo', 'SchoolHoliday']
@@ -38,8 +40,9 @@ y = train.Sales
 lm = LinearRegression()
 lm.fit(X,y)
 
-#print lm.intercept_
-#print lm.coef_
+print "Linear regression coeffs"
+print lm.intercept_
+print zip(columns, lm.coef_)
 
 predicted_sales = lm.predict(test[columns])
 assert(len(predicted_sales) == len(test))
