@@ -51,6 +51,7 @@ plt.legend()
 plt.show()
 
 # Detailed analysis
+'''
 evaluation['sqr_error'].hist(bins=200)
 plt.title('Distribution of square error')
 plt.show()
@@ -63,3 +64,4 @@ evaluation.loc[evaluation.sqr_error > threshold, 'sqr_error'] = 0.0
 evaluation['sqr_error'].cumsum().plot(label='without worst 1% error')
 plt.legend(loc='upper left')
 plt.show()
+'''

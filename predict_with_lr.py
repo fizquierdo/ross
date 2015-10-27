@@ -29,10 +29,7 @@ test.loc[ test.Open.isnull(), 'Open' ] = 1
 
 # Linear regression: create X and Y
 # following example from  http://nbviewer.ipython.org/github/justmarkham/DAT4/blob/master/notebooks/08_linear_regression.ipynb
-
-#columns = ['Store', 'DayOfWeek', 'Promo']
-#columns = ['Store', 'DayOfWeek', 'Promo', 'StateHoliday', 'SchoolHoliday']
-columns = ['Store', 'DayOfWeek', 'Promo', 'SchoolHoliday']
+columns = ['Store', 'DayOfWeek', 'Promo']
 
 X = train[columns]
 y = train.Sales
@@ -50,13 +47,3 @@ test['Sales'] = predicted_sales
 test.loc[ test.Open == 0, 'Sales' ] = 0.0
 
 test[[ 'Id', 'Sales' ]].to_csv( output_file, index = False )
-
-'''
-test2 = pd.merge( test, medians, on = columns, how = 'left' )
-assert( len( test2 ) == len( test ))
-
-test2.loc[ test2.Open == 0, 'Sales' ] = 0
-assert( test2.Sales.isnull().sum() == 0 )
-
-test2[[ 'Id', 'Sales' ]].to_csv( output_file, index = False )
-'''
