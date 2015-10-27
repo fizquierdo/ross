@@ -17,9 +17,9 @@ assert (len(train) == len(newtrain) + len(newtest))
 
 newtrain.to_csv(wdir+'train.csv')
 
-#print len(newtest['Store'])
-#print len(set(list(newtest['Store'])))
-#print len(set(list(train['Store'])))
+print 'total set', len(train)
+print 'new test set', len(newtest), len(newtest.loc[newtest.DayOfWeek==7])
+print 'new train set', len(newtrain)
 
 # New ids
 ids = range(1,len(newtest)+1)
@@ -32,6 +32,8 @@ df_solution.to_csv(wdir+'test_solution.csv', index = False)
 
 # Construct the test dataset with the fields available
 cols = ['Store','DayOfWeek','Date','Open','Promo','StateHoliday','SchoolHoliday']
+# Add the Customers feature (not available in the real test dataset)
+#cols += ['Customers']
 df_newtest = pd.DataFrame(ids, columns=['Id'])
 df_newtest[cols] = newtest[cols]
 assert(len(df_newtest) == len(newtest))
